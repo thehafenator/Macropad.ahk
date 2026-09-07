@@ -121,7 +121,7 @@ CapsLock combinations can be assigned directly in a menu item by using
 AutoHotkey's custom-combination syntax in the item's hotkey field:
 
 ```ahk
-["Calculator", (*) => Run("calc.exe"), "windows.ico", "CapsLock & c"]
+["Calculator", (*) => Run("calc.exe"), "windows.ico", "~CapsLock & c"]
 ```
 
 The `AddMenuItems` helper recognizes options containing ` & ` and registers

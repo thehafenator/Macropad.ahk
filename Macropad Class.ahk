@@ -223,7 +223,7 @@ class Macropad {
                     if (!option || option = "")
                         continue
                     ; Support normal modifier hotkeys and custom combinations such as
-                    ; "CapsLock & c". This lets CapsLock act as an additional
+                    ; "~CapsLock & c". This lets CapsLock act as an additional
                     ; modifier without hard-coding individual shortcuts here.
                     if (showHotkeys && (InStr(option, " & ") || RegExMatch(option, "i)^([\^\!\+\#]*F?[1-9]|[\^\!\+\#]*F1[0-2]|[\^\!\+\#]+.)"))) {
                         try {
