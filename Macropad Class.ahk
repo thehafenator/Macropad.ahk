@@ -222,7 +222,10 @@ class Macropad {
                 for option in options {
                     if (!option || option = "")
                         continue
-                    if (showHotkeys && RegExMatch(option, "i)^([\^\!\+\#]*F?[1-9]|[\^\!\+\#]*F1[0-2]|[\^\!\+\#]+.)")) {
+                    ; Support normal modifier hotkeys and custom combinations such as
+                    ; "CapsLock & c". This lets CapsLock act as an additional
+                    ; modifier without hard-coding individual shortcuts here.
+                    if (showHotkeys && (InStr(option, " & ") || RegExMatch(option, "i)^([\^\!\+\#]*F?[1-9]|[\^\!\+\#]*F1[0-2]|[\^\!\+\#]+.)"))) {
                         try {
                             Hotkey(option, (*) => this.ShowSubmenu(callback))
                             submenuShortcuts.Push(option)
@@ -262,7 +265,8 @@ class Macropad {
         for option in options {
             if (!option || option = "")
                 continue
-                if (showHotkeys && RegExMatch(option, "i)^([\^\!\+\#]*F?[1-9]|[\^\!\+\#]*F1[0-2]|[\^\!\+\#]+.)")) {
+                ; A custom combination uses AutoHotkey's "prefix & key" syntax.
+                if (showHotkeys && (InStr(option, " & ") || RegExMatch(option, "i)^([\^\!\+\#]*F?[1-9]|[\^\!\+\#]*F1[0-2]|[\^\!\+\#]+.)"))) {
                 try {
                     Hotkey(option, processedCallback)
                     shortcutTexts.Push(option)

@@ -115,3 +115,17 @@ This could be helpful if you have a lot of hotkeys and want to make the menu cle
 
  I demonstrated this script briefly in the first few minutes of this video here:
  https://www.youtube.com/watch?v=Kz6WmbeyU_I
+# Using CapsLock as an additional modifier
+
+CapsLock combinations can be assigned directly in a menu item by using
+AutoHotkey's custom-combination syntax in the item's hotkey field:
+
+```ahk
+["Calculator", (*) => Run("calc.exe"), "windows.ico", "CapsLock & c"]
+```
+
+The `AddMenuItems` helper recognizes options containing ` & ` and registers
+them with `Hotkey()`. This is opt-in: existing CapsLock menu behavior is not
+changed unless you add a CapsLock combination to a menu item. If CapsLock is
+already handled by another script, avoid assigning the same combination in
+both scripts.
